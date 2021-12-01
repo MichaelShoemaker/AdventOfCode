@@ -2,7 +2,7 @@ def count_increases(file):
     f = open(file)
     data = f.readlines()
     count = 0
-    previous_line = -9999999
+    previous_line = 999999999999999
 
     for line in data:
         current_line = line
