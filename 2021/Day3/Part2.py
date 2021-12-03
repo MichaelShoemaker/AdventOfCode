@@ -41,7 +41,9 @@ def get_reading(data,switch):
                     removals.append(num)
         data = np.delete(data, (removals), axis=0)
 
+def calc(file):
+    data = make_data(file)
+    return get_reading(data,'o') * get_reading(data,'o') 
+
 if __name__=='__main__':
-    oxygen = get_reading(make_data('input.txt'),'o')
-    co2 = get_reading(make_data('input.txt'),'c')
-    print(oxygen*co2)
+    print(calc('input.txt'))
