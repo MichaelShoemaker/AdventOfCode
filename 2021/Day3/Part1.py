@@ -9,10 +9,10 @@ def list_to_bin(strlist):
     return ''.join([str(i) for i in strlist])
 
 def calc_mask(data, flag):
-        if flag == 'gamma':
-            return [1 if i > len(data)/2 else 0 for i in data.sum(axis=0)]
-        elif flag == 'epsilon':
-            return [1 if i < len(data)/2 else 0 for i in data.sum(axis=0)]
+    if flag == 'gamma':
+        return [1 if i > len(data)/2 else 0 for i in data.sum(axis=0)]
+    elif flag == 'epsilon':
+        return [1 if i < len(data)/2 else 0 for i in data.sum(axis=0)]
 
 def calc_power(data):
     return int(list_to_bin(calc_mask(data,'gamma')), base=2) * int(list_to_bin(calc_mask(data,'epsilon')), base=2)
