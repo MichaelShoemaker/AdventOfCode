@@ -3,8 +3,9 @@ import statistics
 def get_cost(x,y):
     steps = abs(x-y)
     cost = 0
+    print(steps)
     for i in range(1,steps+1):
-        cost += i
+        cost += i**2
     return cost
 
 def calc(file):
