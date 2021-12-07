@@ -1,13 +1,20 @@
 import statistics
 
-def calc(file):
-    f = open(file).read().splitlines()
-    l = [int(x) for x in f[0].split(',')]
-    meetup = (int(statistics.mean(l)))
+def get_cost(x,y):
+    steps = abs(x-y)
     cost = 0
-    for i in l:
-        cost += abs(i-meetup)
-    return meetup
+    for i in range(1,steps+1):
+        cost += i
+    return cost
+
+def calc(file):
+    f = [int(x) for x in open(file).read().split(',')]
+
+    # meetup = (int(statistics.mean(l)))
+    # cost = 0
+    # for i in l:
+    #     cost += abs(i-meetup)
+    return f
 
 if __name__=='__main__':
-    print(calc('test.txt'))
+    print(get_cost(-1,3))
