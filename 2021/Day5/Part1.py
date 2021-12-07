@@ -1,40 +1,36 @@
 import typing
-
+#x1,y1 -> x2,y2
 def blank_grid(x, y):
     return [[0]*(x+1)] * (y+1)
 
 def make_grid(start, end):
-    pop_list = []
-    for i in range(len(start)):
-        if start[i][0] != end[i][0] or start[i][1] != end[i][1]:
-            pop_list.append(i)
-
-    xmin = min([x[0] for x in start]+[x[0] for x in end])
     xmax = max([x[0] for x in start]+[x[0] for x in end])
-
-    ymin = min([y[1] for y in start]+[y[1] for y in end])
     ymax = max([y[1] for y in start]+[y[1] for y in end])
-    #print(xmax, ymax)
     grid = blank_grid(xmax, ymax)
     return start,end,grid
 
 def draw_lines(start, end, grid):
-    #print(start)
-    #print(end)
     for i in range(0,len(end)):
+        #Xs match
         if start[i][0] == end[i][0]:
-            #print(start[i][0],end[i][0])
+            #Get min and max y
+            print("WHAT")
             mark1 = min(start[i][1], end[i][1])
             mark2 = max(start[i][1], end[i][1])
-            while mark1 <= mark2:
+            while mark1 < mark2:
                 grid[start[i][0]][mark1] += 1
                 mark1 +=1
+        #Ys match        
         elif start[i][1] == end[i][1]:
+            #Get the min and max x
             mark1 = min(start[i][0], end[i][0])
             mark2 = max(start[i][0], end[i][0])
-            while mark1 <= mark2:
-                grid[mark1][start[i][1]] += 1
+            while mark1 < mark2:
+                print(start[i][1],mark1)
+                grid[start[i][1]][mark1] += 1
                 mark1 +=1
+            for i in grid:
+                print(i)        
     return grid
         
 
@@ -51,12 +47,9 @@ def get_coordinates(file):
 
 
 if __name__=='__main__':
-    start, end, grid = make_grid(get_coordinates('test.txt')[0],get_coordinates('test.txt')[1])
+    start, end, grid = make_grid(get_coordinates('mytest.txt')[0],get_coordinates('mytest.txt')[1])
     result = draw_lines(start, end, grid)
-    count = 0
-    for i in result:
-        for l in i:
-            if l > 2:
-                count +=1
-    print(count)
+    print(result)
+
+
 
