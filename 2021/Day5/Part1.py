@@ -17,17 +17,19 @@ def draw_lines(start, end, grid):
         #Xs match
         if start[i][0] == end[i][0]:
             #Get min and max y
+            print(start[i], end[i])
             mark1 = min(start[i][1], end[i][1])
             mark2 = max(start[i][1], end[i][1])
-            while mark1 < mark2:
+            while mark1 <= mark2:
                 grid[start[i][0]][mark1] += 1
                 mark1 +=1
         #Ys match        
         elif start[i][1] == end[i][1]:
             #Get the min and max x
+            print(start[i], end[i])
             mark1 = min(start[i][0], end[i][0])
             mark2 = max(start[i][0], end[i][0])
-            while mark1 < mark2:
+            while mark1 <= mark2:
                 grid[start[i][1]][mark1] += 1
                 mark1 +=1   
     return grid
@@ -46,7 +48,7 @@ def get_coordinates(file):
 
 
 if __name__=='__main__':
-    start, end, grid = make_grid(get_coordinates('input.txt')[0],get_coordinates('input.txt')[1])
+    start, end, grid = make_grid(get_coordinates('test.txt')[0],get_coordinates('test.txt')[1])
     result = draw_lines(start, end, grid)
     count = 0
     for i in result:
@@ -54,6 +56,9 @@ if __name__=='__main__':
             if r >= 2:
                 count += 1
     print(count)
+
+    for i in result:
+        print(i)
 
 
 
