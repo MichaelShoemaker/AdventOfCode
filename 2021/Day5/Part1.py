@@ -51,7 +51,7 @@ if __name__=='__main__':
     count = 0
     for i in result:
         for r in i:
-            if r > 0:
+            if r >= 2:
                 count += 1
     print(count)
 
