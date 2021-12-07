@@ -14,13 +14,16 @@ def make_grid(start, end):
 
     ymin = min([y[1] for y in start]+[y[1] for y in end])
     ymax = max([y[1] for y in start]+[y[1] for y in end])
-    print(xmax, ymax)
+    #print(xmax, ymax)
     grid = blank_grid(xmax, ymax)
     return start,end,grid
 
 def draw_lines(start, end, grid):
+    #print(start)
+    #print(end)
     for i in range(0,len(end)):
         if start[i][0] == end[i][0]:
+            #print(start[i][0],end[i][0])
             mark1 = min(start[i][1], end[i][1])
             mark2 = max(start[i][1], end[i][1])
             while mark1 <= mark2:
@@ -32,7 +35,7 @@ def draw_lines(start, end, grid):
             while mark1 <= mark2:
                 grid[mark1][start[i][1]] += 1
                 mark1 +=1
-        return grid
+    return grid
         
 
 #Create two lists of tuples for the coordinates
@@ -50,6 +53,10 @@ def get_coordinates(file):
 if __name__=='__main__':
     start, end, grid = make_grid(get_coordinates('test.txt')[0],get_coordinates('test.txt')[1])
     result = draw_lines(start, end, grid)
+    count = 0
     for i in result:
-        print(i)
+        for l in i:
+            if l > 2:
+                count +=1
+    print(count)
 
