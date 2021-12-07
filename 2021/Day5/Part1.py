@@ -1,7 +1,10 @@
 import typing
 #x1,y1 -> x2,y2
 def blank_grid(x, y):
-    return [[0]*(x+1)] * (y+1)
+    a = []
+    for i in range(y+1):
+        a.append([0]*(x+1))
+    return a
 
 def make_grid(start, end):
     xmax = max([x[0] for x in start]+[x[0] for x in end])
@@ -14,7 +17,6 @@ def draw_lines(start, end, grid):
         #Xs match
         if start[i][0] == end[i][0]:
             #Get min and max y
-            print("WHAT")
             mark1 = min(start[i][1], end[i][1])
             mark2 = max(start[i][1], end[i][1])
             while mark1 < mark2:
@@ -26,11 +28,8 @@ def draw_lines(start, end, grid):
             mark1 = min(start[i][0], end[i][0])
             mark2 = max(start[i][0], end[i][0])
             while mark1 < mark2:
-                print(start[i][1],mark1)
                 grid[start[i][1]][mark1] += 1
-                mark1 +=1
-            for i in grid:
-                print(i)        
+                mark1 +=1   
     return grid
         
 
@@ -47,9 +46,14 @@ def get_coordinates(file):
 
 
 if __name__=='__main__':
-    start, end, grid = make_grid(get_coordinates('mytest.txt')[0],get_coordinates('mytest.txt')[1])
+    start, end, grid = make_grid(get_coordinates('input.txt')[0],get_coordinates('input.txt')[1])
     result = draw_lines(start, end, grid)
-    print(result)
+    count = 0
+    for i in result:
+        for r in i:
+            if r > 0:
+                count += 1
+    print(count)
 
 
 
