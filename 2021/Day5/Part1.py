@@ -21,7 +21,7 @@ def draw_lines(start, end, grid):
             mark1 = min(start[i][1], end[i][1])
             mark2 = max(start[i][1], end[i][1])
             while mark1 <= mark2:
-                grid[start[i][0]][mark1] += 1
+                grid[mark1][start[i][0]] += 1
                 mark1 +=1
         #Ys match        
         elif start[i][1] == end[i][1]:
@@ -30,7 +30,7 @@ def draw_lines(start, end, grid):
             mark1 = min(start[i][0], end[i][0])
             mark2 = max(start[i][0], end[i][0])
             while mark1 <= mark2:
-                grid[start[i][1]][mark1] += 1
+                grid[mark1][start[i][1]] += 1
                 mark1 +=1   
     return grid
         
