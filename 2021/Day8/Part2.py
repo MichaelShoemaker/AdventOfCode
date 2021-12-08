@@ -21,17 +21,31 @@ def parse_text(file):
         for i in a[1]:
             if len(i) == 2:
                 ciph[1] = i
-                #print(1, end = "")
             elif len(i) == 4:
                 ciph[4] = i
-                #print(4,end="") 
+            elif len(i) == 7:
+                ciph[8] = i
+            elif len(i) == 3:
+                ciph[7] = i
         for i in a[1]:
-            if len(i) == 5:
-                if len(i.intersection(ciph[4])) == 3: 
+            if len(i) == 5:              
+                if len(i.intersection(ciph[4])) == 3 and len(i.intersection(ciph[1])) == 1: 
                     ciph[5] = i 
-                elif len(i.intersection(ciph[4])) == 2:
-                else:
+                elif len(i.intersection(ciph[4])) == 3 and len(i.intersection(ciph[1])) == 2:
+                    ciph[3] = i
+                elif len(i.intersection(ciph[4])) == 2 and len(i.intersection(ciph[1])) == 1:
                     ciph[2] = i
+
+
+                if len(i) == 6:
+                    if len(i.intersection(ciph[4])) == 3 and len(i.intersection(ciph[1])) == 1: 
+                        ciph[6] = i
+                    elif len(i.intersection(ciph[4])) == 4 and len(i.intersection(ciph[1])) == 2:
+                        ciph[9] = i
+                    elif len(i.intersection(ciph[4])) == 3 and len(i.intersection(ciph[1])) == 2:
+                        ciph[0] = i
+
+                                       
         print(ciph)
             # elif len(i) == 7:
             #     ciph[8] = i
