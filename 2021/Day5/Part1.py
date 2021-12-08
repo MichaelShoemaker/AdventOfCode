@@ -17,7 +17,6 @@ def draw_lines(start, end, grid):
         #Xs match
         if start[i][0] == end[i][0]:
             #Get min and max y
-            print(start[i], end[i])
             mark1 = min(start[i][1], end[i][1])
             mark2 = max(start[i][1], end[i][1])
             while mark1 <= mark2:
