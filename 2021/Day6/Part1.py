@@ -18,13 +18,15 @@ class JellyFish:
 
 
 if __name__=='__main__':
-    days = 18
+    days = 4
     for x in make_data('test.txt'):
         school.append(JellyFish(x))
 
     for i in range(days):
-        print("Day {} there are {} fish".format(i, len(school)))
+        print()
+        #print("Day {} there are {} fish".format(i, len(school)))
         for j in school:
+            print(j.age, end ="")
             if j.age == 0:
                 babies.append(JellyFish(8))
                 j.move()
