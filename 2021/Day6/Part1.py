@@ -3,24 +3,37 @@ def make_data(file):
 
 #List to hold fish
 school = []
+babies = []
 
 class JellyFish:
     def __init__(self, age):
         self.age = age
 
-    def spawn():
-        return JellyFish(8)
 
     def move(self):
-        if self.age - 1 == 0:
+        if self.age - 1 < 0:
             self.age = 6
-            self.spawn()
         else:
             self.age -= 1
 
 
 if __name__=='__main__':
-    print(make_data('test.txt'))
+    days = 18
+    for x in make_data('test.txt'):
+        school.append(JellyFish(x))
+
+    for i in range(days):
+        print("Day {} there are {} fish".format(i, len(school)))
+        for j in school:
+            if j.age == 0:
+                babies.append(JellyFish(8))
+                j.move()
+            else:
+                j.move()
+        school = school + babies
+
+    print(len(school))
+            
 
 
 #Need to make a jellyfish for each item in number in the list saving that number as their age
