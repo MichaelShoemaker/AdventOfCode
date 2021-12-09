@@ -50,7 +50,7 @@ def find_lows(data):
                     print("LowVal {} at position {},{}".format(col, r, c))
                     risk += (1+int(col))
             #Right Side
-            elif c == len(row):
+            elif c == len(row)-1:
                 #print("cond7")
                 if data[r-1][c] > col and data[r][c-1] > col and data[r+1][c] > col:
                     risk += (1+int(col))
@@ -62,12 +62,13 @@ def find_lows(data):
                     risk += (1+int(col))
                     print("LowVal {} at position {},{}".format(col, r, c))
             else:
-                # print("cond9")
-                if col == '7':
-                    print(col, data[r][c-1], data[r-1][c], data[r][c+1], data[r+1][c])
-                if data[r][c-1] > col and data[r-1][c] > col and data[r][c+1] > col and data[r+1][c] > col:
-                    risk += (1+int(col))
-                    print("LowVal {} at position {},{}".format(col, r, c))
+                try:
+                    if data[r][c-1] > col and data[r-1][c] > col and data[r][c+1] > col and data[r+1][c] > col:
+                        risk += (1+int(col))
+                        print("LowVal {} at position {},{}".format(col, r, c))
+                except Exception as e:
+                    print(str(e))
+                    print(row, col,r,c)
     return risk
 
 if __name__=='__main__':
